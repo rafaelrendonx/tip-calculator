@@ -22,6 +22,13 @@ export default {
         'desktop': '1440px',
         // => @media (min-width: 640px) { ... }
       },
+      fontSize: {
+        'logo': ['1.54rem', {
+          lineHeight: '2.2rem',
+          letterSpacing: '-0.01em',
+          fontWeight: '500',
+        }],
+      }
     },
   },
   plugins: [],
