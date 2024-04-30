@@ -4,14 +4,15 @@ function App() {
 
   //const tips = [5, 10, 15, 25, 50]
 
-  const [bill, setBill] = useState(0)
+  const [bill, setBill] = useState('')
   const [people, setPeople] = useState(1)
   const [tip, setTip] = useState(0)
   const [selectedTip, setSelectedTip] = useState(-1)
   const [customTip, setCustomTip] = useState('')
 
   const handleBill = (event) => {
-    setBill(event.target.value)
+    const billValue = Number(event.target.value)
+    setBill(billValue)
   }
 
   const handlePeople = (event) => {
@@ -40,8 +41,8 @@ function App() {
   }
 
   const handleReset = () => {
-    setBill(0)
-    setPeople(1)
+    setBill('')
+    setPeople('')
     setTip(0)
     setSelectedTip(-1)
     setCustomTip('')
@@ -102,7 +103,7 @@ function App() {
             </div>
 
             <div className="relative rounded-md border">
-              <input type="number" value={bill} onChange={handleBill} id="bill" min="0" maxLength={6}
+              <input type="phone" value={bill} onChange={handleBill} id="bill" min="0" maxLength={6}
                 className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-strong-cyan border desktop:pt-[6px] desktop:pl-[64px]" />
               <div className="absolute inset-y-0 pl-4 flex items-center pointer-events-none bg-very-light-grayish-cyan rounded-md desktop:pl-5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17">
@@ -154,10 +155,10 @@ function App() {
 
             <div className="relative rounded-md border">
               {people === 0 ?
-                <input type="number" value={people} onChange={handlePeople} id="people" min="0"
+                <input type="phone" value={people} onChange={handlePeople} id="people" min="0"
                   className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-red-400 border desktop:pt-[6px] desktop:pl-16" />
                 :
-                <input type="number" value={people} onChange={handlePeople} id="people" min="0"
+                <input type="phone" value={people} onChange={handlePeople} id="people" min="0"
                   className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-strong-cyan border desktop:pt-[6px] desktop:pl-16" />}
 
               <div className="absolute inset-y-0 pl-4 flex items-center pointer-events-none bg-very-light-grayish-cyan rounded-md desktop:pl-5">
