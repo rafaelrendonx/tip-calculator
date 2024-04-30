@@ -12,15 +12,23 @@ function App() {
 
   const handleBill = (event) => {
     const billValue = Number(event.target.value)
-    setBill(billValue)
+    if (isNaN(event.target.value)) {
+      setBill('')
+    } else {
+      setBill(billValue)
+    }
   }
 
   const handlePeople = (event) => {
     const peopleValue = Number(event.target.value)
+    if (isNaN(event.target.value)) {
+      setPeople('')
+    } else {
+      setPeople(peopleValue)
+    }
     if (people < 0) {
       setPeople(1)
     }
-    setPeople(peopleValue)
   }
 
   const handleTip = (tipAmount, index) => {
@@ -103,7 +111,7 @@ function App() {
             </div>
 
             <div className="relative rounded-md border">
-              <input type="phone" value={bill} onChange={handleBill} id="bill" min="0" maxLength={6}
+              <input type="tel" value={bill} onChange={handleBill} id="bill" min="0" maxLength={6}
                 className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-strong-cyan border desktop:pt-[6px] desktop:pl-[64px]" />
               <div className="absolute inset-y-0 pl-4 flex items-center pointer-events-none bg-very-light-grayish-cyan rounded-md desktop:pl-5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="11" height="17">
@@ -117,8 +125,8 @@ function App() {
           {/*Tips*/}
           <div className="pb-[30px] desktop:pb-10">
             <div className="flex flex-row justify-between desktop:flex desktop:flex-row desktop:justify-between">
-            <p className="text-dark-grayish-cyan pb-4">Select Tip %</p>
-            {customTip > 100 ? <p className="text-red-400">No higher than 100%</p> : ''}
+              <p className="text-dark-grayish-cyan pb-4">Select Tip %</p>
+              {customTip > 100 ? <p className="text-red-400">No higher than 100%</p> : ''}
             </div>
             <div className="grid grid-cols-2 gap-4 desktop:grid-cols-3">
               <button onClick={() => handleTip(5, 0)}
@@ -155,10 +163,10 @@ function App() {
 
             <div className="relative rounded-md border">
               {people === 0 ?
-                <input type="phone" value={people} onChange={handlePeople} id="people" min="0"
+                <input type="tel" value={people} onChange={handlePeople} id="people" min="0"
                   className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-red-400 border desktop:pt-[6px] desktop:pl-16" />
                 :
-                <input type="phone" value={people} onChange={handlePeople} id="people" min="0"
+                <input type="tel" value={people} onChange={handlePeople} id="people" min="0"
                   className="rounded-md py-[6.75px] bg-very-light-grayish-cyan text-very-dark-cyan text-2xl text-right pr-2 focus:outline-none focus:ring focus:ring-strong-cyan border desktop:pt-[6px] desktop:pl-16" />}
 
               <div className="absolute inset-y-0 pl-4 flex items-center pointer-events-none bg-very-light-grayish-cyan rounded-md desktop:pl-5">
